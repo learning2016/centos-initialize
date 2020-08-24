@@ -34,6 +34,10 @@ function Install_Zabbix_agent () {
               exit 1
           fi
       fi
+      
+      read -p "请输入Zabbix-Agent的Hostname:" Hostname
+      echo "Hostname=$Hostname"
+      echo "Hostname=$Hostname">>/etc/zabbix/zabbix_agentd.conf
 
       if grep -q 7. /etc/redhat-release; then
             systemctl start zabbix-agent.service
